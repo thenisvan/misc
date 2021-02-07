@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 if [ `whoami` != root ]; then
     echo Please run this script as root or using sudo
     exit
@@ -20,4 +19,7 @@ firewall-cmd --permanent --zone=public --add-service=https
 firewall-cmd --reload
 
 systemctl enable nginx
-curl -o /dev/null -s -w "%{http_code}\n" http://$PUBLIC_IPV4
+
+if [ `curl -o /dev/null -s -w "%{http_code}\n" http://$PUBLIC_IPV4` == 200 ]; then
+    echo Successful 
+fi
