@@ -12,10 +12,10 @@ module_hotfixes=true
 EOL
 sudo yum install nginx -y
 
-systemctl start nginx
 
-firewall-cmd --permanent --zone=public --add-service=http 
-firewall-cmd --permanent --zone=public --add-service=https
-firewall-cmd --reload
+sudo firewall-cmd --permanent --zone=public --add-service=http 
+sudo firewall-cmd --permanent --zone=public --add-service=https
+sudo firewall-cmd --reload
 
-systemctl enable nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
