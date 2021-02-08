@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-sudo yum install yum-utils -y
 sudo su -c "cat > /etc/yum.repos.d/nginx.repo" <<EOF
 [nginx-stable]
 name=nginx stable repo
@@ -21,6 +20,7 @@ module_hotfixes=true
 EOF
 
 # default: stable, uncomment for mainline
+sudo yum install yum-utils -y
 sudo yum-config-manager --enable nginx-mainline
 
 sudo yum install nginx -y
@@ -31,3 +31,4 @@ sudo firewall-cmd --reload
 
 sudo systemctl start nginx
 sudo systemctl enable nginx
+# celkovy cas pisania a debuggovania tohto scriptu bol 35minut
